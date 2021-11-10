@@ -1,26 +1,15 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Playlist, Comment, Like } = require('../models');
 const withAuth = require('../utils/auth');
 const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyApi = new SpotifyWebApi();
 // Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
-
-    const users = userData.map((project) => project.get({ plain: true }));
-
-    res.render('homepage', {
-      users,
-      // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+    res.render('homepage')
+} catch (err) {
+    res.status(500).json(err)
+}
 });
 
 router.get('/login', (req, res) => {
@@ -37,10 +26,6 @@ router.get('/newplaylist', (req, res) => {
   res.render('createPlaylist')
   return
 });
-
-
-
-
 
 router.get('/discover', async (req, res) => {
   console.log('get method')
