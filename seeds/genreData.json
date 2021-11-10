@@ -1,0 +1,78 @@
+[
+    {
+        "name": "pop",
+        "playlist_id": 1
+    },
+    {
+        "name": "alternative",
+        "playlist_id": 2
+    },
+    {
+        "name": "indie",
+        "playlist_id": 2
+    },
+    {
+        "name": "rock",
+        "playlist_id": 1
+    },
+    {
+        "name": "hip hop"
+    },
+    {
+        "name": "jazz"
+    },
+    {
+        "name": "country"
+    },
+    {
+        "name": "folk"
+    },
+    {
+        "name": "heavy metal"
+    },
+    {
+        "name": "blues"
+    },
+    {
+        "name": "classical"
+    },
+    {
+        "name": "edm"
+    },
+    {
+        "name": "funk"
+    },
+    {
+        "name": "electronic"
+    },
+    {
+        "name": "punk rock"
+    },
+    {
+        "name": "soul"
+    },
+    {
+        "name": "disco"
+    },
+    {
+        "name": "reggae"
+    },
+    {
+        "name": "alternative"
+    },
+    {
+        "name": "R&B"
+    },
+    {
+        "name": "techno"
+    },
+    {
+        "name": "instrumental"
+    },
+    {
+        "name": "ambient"
+    },
+    {
+        "name": "house"
+    }
+]
