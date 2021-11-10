@@ -32,4 +32,9 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/newplaylist', (req, res) => {
+  res.render('createPlaylist')
+  return
+});
+
 module.exports = router;
