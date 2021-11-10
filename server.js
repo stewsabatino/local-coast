@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -100,6 +100,8 @@ app.get('/callback', (req, res) => {
     console.log(
       `Sucessfully retreived access token. Expires in ${expires_in} s.`
     );
+
+    res.render('homepage');
     req.session.save(()=> {
       req.session.access_token = access_token;
       
@@ -144,7 +146,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(routes);
-
+ 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });
