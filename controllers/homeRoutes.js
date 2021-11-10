@@ -62,8 +62,17 @@ router.get('/discover', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
     spotifyApi.setAccessToken(req.session.access_token || process.env.SPOTIFY_ACCESS_TOKEN);
+    spotifyApi.setRefreshToken(req.session.refresh_token);
     try {
+      // const userData = await User.findAll({
+      //   attributes: { exclude: ['password'] },
+      //   order: [['name', 'ASC']],
+      // });
+      // const users = userData.map((project) => project.get({ plain: true }));
+
         const me = await spotifyApi.getMe();
+        
+        // const meData = me.get({ plain: true });
         console.log(me);
         res.render('userDash', me);
     } catch (err) {
