@@ -24,6 +24,7 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
+
 // Spotify Specific - Generates random string for Cookies. Could be a helper function
 /**
  * Generates a random string containing numbers and letters

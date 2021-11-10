@@ -15,7 +15,7 @@ Playlist.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-          },
+        },
         length: {
             type: DataTypes.INTEGER,
             allowNull: false,
