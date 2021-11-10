@@ -44,13 +44,31 @@ router.get('/discover', async (req, res) => {
 });
 
 // Store in auth and check access token value in req sessions. 
+// User.create 
+  // user.name = display_name
+
+
 
 router.get('/dashboard', async (req, res) => {
     spotifyApi.setAccessToken(req.session.access_token || process.env.SPOTIFY_ACCESS_TOKEN);
+    spotifyApi.setRefreshToken(req.session.refresh_token);
     try {
+        
+      
+      // const users = userData.map((project) => project.get({ plain: true }));
+
         const me = await spotifyApi.getMe();
-        console.log(me);
-        res.render('userDash', me);
+        console.log(me.body.id);
+        
+        // const meData = me.get({ plain: true });
+        const newUser = await User.create({
+          name: me.body.display_name,
+          email: me.body.email,
+          spotify_id: me.body.id
+        });
+        
+        console.log(newUser);
+        res.render('userDash', newUser);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
