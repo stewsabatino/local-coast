@@ -6,10 +6,10 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 // Spotify Specific Authorization Packages
-const request = require('request'); // "Request" library
-const cors = require('cors');
-const querystring = require('querystring');
-const cookieParser = require('cookie-parser');
+// const request = require('request'); // "Request" library
+// const cors = require('cors');
+// const querystring = require('querystring');
+// const cookieParser = require('cookie-parser');
 
 
 const sequelize = require('./config/connection');
@@ -45,6 +45,20 @@ const scopes = [
   'user-follow-read',
   'user-follow-modify'
 ];
+
+// Configure and link a session object with the sequelize store
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+// Add express-session and store as Express.js middleware
+app.use(session(sess));
+
 // API - Node Package
 var spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID || '319241da7db34052a52158f93943b6b7',
@@ -86,7 +100,13 @@ app.get('/callback', (req, res) => {
     console.log(
       `Sucessfully retreived access token. Expires in ${expires_in} s.`
     );
+
     res.render('homepage');
+    req.session.save(()=> {
+      req.session.access_token = access_token;
+      
+    
+    res.redirect('/dashboard');
 
     setInterval(async () => {
       const data = await spotifyApi.refreshAccessToken();
@@ -97,6 +117,7 @@ app.get('/callback', (req, res) => {
       spotifyApi.setAccessToken(access_token);
     }, expires_in / 2 * 1000);
   })
+})
   .catch(error => {
     console.error('Error getting Tokens:', error);
     res.send(`Error getting Tokens: ${error}`);
@@ -112,20 +133,9 @@ const hbs = exphbs.create({ helpers });
 
 
 
-// Configure and link a session object with the sequelize store
-const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
-};
 
 
-// Add express-session and store as Express.js middleware
-app.use(session(sess));
+
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
