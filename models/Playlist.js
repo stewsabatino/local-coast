@@ -20,11 +20,7 @@ Playlist.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        genre: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        iframe: {
+        link: {
             type: DataTypes.STRING,
             allowNull: false,
         },
