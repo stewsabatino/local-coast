@@ -53,6 +53,7 @@ var spotifyApi = new SpotifyWebApi({
 });
 
 
+
 // API - Node Package
 app.get('/spotify-login', (req, res) => {
   res.redirect(spotifyApi.createAuthorizeURL(scopes)); // API - Node Library created Authorization
