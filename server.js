@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -86,7 +86,7 @@ app.get('/callback', (req, res) => {
     console.log(
       `Sucessfully retreived access token. Expires in ${expires_in} s.`
     );
-    res.send('Success! You can now close the window.');
+    res.render('homepage');
 
     setInterval(async () => {
       const data = await spotifyApi.refreshAccessToken();
@@ -136,7 +136,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(routes);
-
+ 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });
