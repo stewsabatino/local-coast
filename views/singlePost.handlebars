@@ -3,26 +3,14 @@
     <h2><a href="/singlePost/:{{playlists.id}}">{{playlists.title}}</a></h2>
   </div>
   <div class="col-md-6">
-    <iframe src="https://open.spotify.com/embed/album/{{playlists.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-  </div>
-</div>
-
-
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{playlists.comments}}</h2>
-  </div>
-  <div class="col-md-6">
-    <a href="/add">Add Comment</a>
+    <iframe src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
 </div>
 
 <div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>Comments</h2>
-  </div>
-  <div class="col-md-6">
-    <a href="/add">Add Comment</a>
-  </div>
+    {{#each playlists.comments}}
+        <div id="comments-wrapper">
+            <h2>{{entry}}</h2>
+        </div>
+    {{/each}}
 </div>
-
