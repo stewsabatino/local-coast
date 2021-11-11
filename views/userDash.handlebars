@@ -1,12 +1,11 @@
-{{!-- <div id="signin-confirmation">
-    <h4>Signed In</h4>
-    <small>Section Rendered by Server File</small>
-    {{meData}}
-    <from id="playlist-form">
-        <button type="submit"> Select a playlist</button>
-    </from>
+<div class="col-md-6">
+    <h2><a id="add-playlist" href="/newplaylist">Add a playlist</a></h2>
 </div>
-<script src="/js/playlist-select"></script> --}}
+{{#each user.items as |item|}}
+        <div id="comments-wrapper">
+            <h2>{{item.name}}</h2>
+        </div>
+{{/each}}
 
 {{#each users as |user| }}
 <div class="row align-center mb-5">
