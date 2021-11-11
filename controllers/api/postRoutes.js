@@ -7,6 +7,7 @@ router.post('/', async (req, res) => {
             title: req.body.title,
             link: req.body.link,
             length: req.body.length,
+            user_id: req.session.user_id
         })
         res.json(playlistData)
     } catch (err) {
