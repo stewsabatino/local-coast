@@ -1,11 +1,12 @@
-const formHandler = async (event) => {
-    // Stop the browser from submitting the form so we can do so with JavaScript
-    event.preventDefault();
+const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyApi = new SpotifyWebApi();
 
-    // Send the e-mail and password to the server
-    document.location.replace('spotify-login')
-};
+const playlistAddHandler = (event) => {
+    const id = getElementById('add-to-home').getAttribute("value");
+    const singlePlaylist = spotifyApi.getUserPlaylist(id);
+    return singlePlaylist;
+}
 
-document
-    .querySelector('.button')
-    .addEventListener('click', formHandler);
+document.getElementById('add-to-home').addEventListener('click', playlistAddHandler);
+
+module.exports = singlePlaylist;

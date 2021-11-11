@@ -108,33 +108,35 @@ router.get('/playlist/:id', async (req, res) => {
 
 
 router.get('/newplaylist', async (req, res) => {
-  // console.log(req.params)
-  // spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESS_TOKEN);
   try {
     const currentData = await User.findByPk(req.session.user_id, {
     })
     const user = currentData.get({ plain: true })
-    const userData = await spotifyApi.getUserPlaylists(user.spotify_id);
-
-          
-            // console.log(`Playlist Name: ${playlistData.name} ID: ${playlistData.id}`);
-          
-          console.log(userData.body);
-          // const user = userData.get({ plain: true });
-          res.render('userDash', { user:userData.body, user_id: req.session.user_id, logged_in: req.session.logged_in })
-
-
-    
-        
-        
-      
-    
+    const userData = await spotifyApi.getUserPlaylists(user.spotify_id);     
+    console.log(userData.body.images);
+    // const user = userData.get({ plain: true });
+    res.render('userDash', { user:userData.body, user_id: req.session.user_id, logged_in: req.session.logged_in })
   } catch (err) {
     console.log(err);
       res.status(500).json(err);
-    };
+  };
 })
 
 
+router.get('/newplaylist/:id', async (req, res) => {
+  try {
+    const currentData = await User.findByPk(req.session.user_id, {
+    })
+    const userData = await spotifyApi.getUserPlaylist(req.params.id);     
+    console.log(userData.body);
+    const convert = userData.get({ plain: true })
+    console.log(convert);
+    // const user = userData.get({ plain: true });
+    res.render('createPlaylist', { user:userData.body, user_id: req.session.user_id, logged_in: req.session.logged_in })
+  } catch (err) {
+    console.log(err);
+      res.status(500).json(err);
+  };
+})
 
 module.exports = router;
