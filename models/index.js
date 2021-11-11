@@ -14,11 +14,11 @@ Playlist.belongsTo(User, {
 
 
 Playlist.hasMany(Comment, {
-    foreignKey: 'post_id',
+    foreignKey: 'playlist_id',
 });
 
 Comment.belongsTo(Playlist, {
-    foreignKey: 'post_id',
+    foreignKey: 'playlist_id',
 });
 
 
@@ -32,11 +32,11 @@ Comment.belongsTo(User, {
 
 
 Playlist.hasMany(Like, {
-    foreignKey: 'post_id',
+    foreignKey: 'playlist_id',
 });
 
 Like.belongsTo(Playlist, {
-    foreignKey: 'post_id',
+    foreignKey: 'playlist_id',
 });
 
 
