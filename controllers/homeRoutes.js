@@ -55,14 +55,20 @@ router.get('/dashboard', async (req, res) => {
   try {
 
     const me = await spotifyApi.getMe();
-    const userData = await User.findOne({ where: { email: me.body.email } })
+    const userData = await User.findOne({ 
+      where: { email: me.body.email },
+      include: [{ model: Playlist }, { model: Comment }, { model: Like }], 
+    })
     
+    const users = userData.get({ plain: true })
+
     if (!userData) {
       const newUser = await User.create({
         name: me.body.display_name,
         email: me.body.email,
         spotify_id: me.body.id
       });
+      
       req.session.save(() => {
         req.session.user_id = me.body.id;
      
@@ -74,6 +80,25 @@ router.get('/dashboard', async (req, res) => {
       res.render('userDash', userData)
      
         req.session.user_id = userData.id;
+      
+      req.session.save(() => {
+        req.session.user_id = newUser.id;
+        req.session.logged_in = true;
+
+      console.log(newUser);
+      res.render('userDash', newUser);
+      });
+
+    } else {
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+      console.log(users)
+      res.render('userDash', {
+        users,
+        user_id: req.session.user_id,
+        logged_in: req.session.logged_in
+      })
       });
     }
 
@@ -83,7 +108,7 @@ router.get('/dashboard', async (req, res) => {
   }
 })
 
-router.get('/playlist/:id', async (req, res) => {
+router.get('/editPlaylist/:id', async (req, res) => {
   // console.log(req.params)
   try {
       const playlistData = await Playlist.findByPk(req.params.id, {
@@ -96,7 +121,7 @@ router.get('/playlist/:id', async (req, res) => {
     
       const playlists = playlistData.get({ plain: true })
       console.log(playlists)
-      res.render('singlePost', {
+      res.render('editPlaylist', {
           playlists,
           logged_in: req.session.logged_in,
       })
