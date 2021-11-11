@@ -54,21 +54,22 @@ router.get('/dashboard', async (req, res) => {
   spotifyApi.setRefreshToken(req.session.refresh_token);
   try {
 
-
-    // const users = userData.map((project) => project.get({ plain: true }));
-
     const me = await spotifyApi.getMe();
-    console.log(me.body.id);
+    const userData = await User.findOne({ where: { email: me.body.email } })
+    
+    if (!userData) {
+      const newUser = await User.create({
+        name: me.body.display_name,
+        email: me.body.email,
+        spotify_id: me.body.id
+      });
+  
+      console.log(newUser);
+      res.render('userDash', newUser);
+    } else {
+      res.render('userDash', userData)
+    }
 
-    // const meData = me.get({ plain: true });
-    const newUser = await User.create({
-      name: me.body.display_name,
-      email: me.body.email,
-      spotify_id: me.body.id
-    });
-
-    console.log(newUser);
-    res.render('userDash', newUser);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
