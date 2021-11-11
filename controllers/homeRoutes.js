@@ -7,9 +7,9 @@ const spotifyApi = new SpotifyWebApi();
 router.get('/', async (req, res) => {
   try {
     res.render('homepage')
-  } catch (err) {
+} catch (err) {
     res.status(500).json(err)
-  }
+}
 });
 
 router.get('/login', (req, res) => {
@@ -30,22 +30,22 @@ router.get('/login', (req, res) => {
 router.get('/discover', async (req, res) => {
   console.log('get method')
   try {
-    const playlistData = await Playlist.findAll({
-      include: [{ model: User }, { model: Comment }, { model: Like }],
-    })
-    const playlists = playlistData.map((playlist) => playlist.get({ plain: true }))
-    console.log(playlists)
-    res.render('discover', {
-      playlists,
-    })
+      const playlistData = await Playlist.findAll({
+          include: [{ model: User }, { model: Comment }, { model: Like }],
+      })
+      const playlists = playlistData.map((playlist) => playlist.get({ plain: true }))
+      console.log(playlists)
+      res.render('discover', {
+          playlists,
+      })
   } catch (err) {
-    res.status(500).json(err)
+      res.status(500).json(err)
   }
 });
 
 // Store in auth and check access token value in req sessions. 
 // User.create 
-// user.name = display_name
+  // user.name = display_name
 
 
 
