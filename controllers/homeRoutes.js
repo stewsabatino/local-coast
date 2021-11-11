@@ -7,9 +7,9 @@ const spotifyApi = new SpotifyWebApi();
 router.get('/', async (req, res) => {
   try {
     res.render('homepage')
-} catch (err) {
+  } catch (err) {
     res.status(500).json(err)
-}
+  }
 });
 
 router.get('/login', (req, res) => {
@@ -30,33 +30,37 @@ router.get('/newplaylist', (req, res) => {
 router.get('/discover', async (req, res) => {
   console.log('get method')
   try {
-      const playlistData = await Playlist.findAll({
-          include: [{ model: User }, { model: Comment }, { model: Like }],
-      })
-      const playlists = playlistData.map((playlist) => playlist.get({ plain: true }))
-      console.log(playlists)
-      res.render('discover', {
-          playlists,
-      })
+    const playlistData = await Playlist.findAll({
+      include: [{ model: User }, { model: Comment }, { model: Like }],
+    })
+    const playlists = playlistData.map((playlist) => playlist.get({ plain: true }))
+    console.log(playlists)
+    res.render('discover', {
+      playlists,
+    })
   } catch (err) {
-      res.status(500).json(err)
+    res.status(500).json(err)
   }
 });
 
 // Store in auth and check access token value in req sessions. 
 // User.create 
-  // user.name = display_name
+// user.name = display_name
 
 
 
 router.get('/dashboard', async (req, res) => {
-    spotifyApi.setAccessToken(req.session.access_token || process.env.SPOTIFY_ACCESS_TOKEN);
-    spotifyApi.setRefreshToken(req.session.refresh_token);
-    try {
-        
-      
-      // const users = userData.map((project) => project.get({ plain: true }));
+  spotifyApi.setAccessToken(req.session.access_token || process.env.SPOTIFY_ACCESS_TOKEN);
+  spotifyApi.setRefreshToken(req.session.refresh_token);
+  try {
 
+
+    // const users = userData.map((project) => project.get({ plain: true }));
+
+    const me = await spotifyApi.getMe();
+    console.log(me.body.id);
+
+<<<<<<< HEAD
         const me = await spotifyApi.getMe();
         console.log(me.body.id);
         
@@ -82,5 +86,43 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
+=======
+    // const meData = me.get({ plain: true });
+    const newUser = await User.create({
+      name: me.body.display_name,
+      email: me.body.email,
+      spotify_id: me.body.id
+    });
+
+    console.log(newUser);
+    res.render('userDash', newUser);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
+router.get('/playlist/:id', async (req, res) => {
+  // console.log(req.params)
+  try {
+      const playlistData = await Playlist.findByPk(req.params.id, {
+          include: [
+              { model: Comment },
+              { model: User },
+              { model: Like }
+          ]
+      })
+    
+      const playlists = playlistData.get({ plain: true })
+      console.log(playlists)
+      res.render('singlePost', {
+          playlists,
+          logged_in: req.session.logged_in,
+      })
+  } catch (err) {
+      res.status(500).json(err);
+      };
+})
+>>>>>>> 477c4570de660b7bacf3e5b31afb2a30536e43e0
 
 module.exports = router;
