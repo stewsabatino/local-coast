@@ -50,34 +50,52 @@ router.get('/discover', async (req, res) => {
 
 
 router.get('/dashboard', async (req, res) => {
-    spotifyApi.setAccessToken(req.session.access_token || process.env.SPOTIFY_ACCESS_TOKEN);
-    spotifyApi.setRefreshToken(req.session.refresh_token);
-    try {
-      // const users = userData.map((project) => project.get({ plain: true }));
-        const me = await spotifyApi.getMe();
-        console.log(me.body.id);
-        
-        req.session.save(() => {
-          req.session.spotify_id = me.body.id;
-        });
-        
-        // const meData = me.get({ plain: true });
-        // We need to account for users that were already created. 
-        const newUser = await User.create({
-          name: me.body.display_name,
-          email: me.body.email,
-          spotify_id: me.body.id
-        });
-        
-        
-        console.log(newUser);
-        res.render('userDash', newUser);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+  spotifyApi.setAccessToken(req.session.access_token || process.env.SPOTIFY_ACCESS_TOKEN);
+  spotifyApi.setRefreshToken(req.session.refresh_token);
+  try {
+
+    const me = await spotifyApi.getMe();
+    const userData = await User.findOne({ where: { email: me.body.email } })
+    
+    if (!userData) {
+      const newUser = await User.create({
+        name: me.body.display_name,
+        email: me.body.email,
+        spotify_id: me.body.id
+      });
+  
+      console.log(newUser);
+      res.render('userDash', newUser);
+    } else {
+      res.render('userDash', userData)
     }
-});
 
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
+router.get('/playlist/:id', async (req, res) => {
+  // console.log(req.params)
+  try {
+      const playlistData = await Playlist.findByPk(req.params.id, {
+          include: [
+              { model: Comment },
+              { model: User },
+              { model: Like }
+          ]
+      })
+    
+      const playlists = playlistData.get({ plain: true })
+      console.log(playlists)
+      res.render('singlePost', {
+          playlists,
+          logged_in: req.session.logged_in,
+      })
+  } catch (err) {
+      res.status(500).json(err);
+      };
+})
 
 module.exports = router;
