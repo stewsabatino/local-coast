@@ -2,7 +2,11 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 router.get('/', async (req, res) => {
     try {
-        const commentData = await Comment.findAll({});
+        const commentData = await Comment.findAll({
+            where: {
+                
+            }
+        });
         res.json(commentData);
     } catch (err) {
         console.log(err);
@@ -26,7 +30,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         if (req.session) {
             const commentData = await Comment.create({
