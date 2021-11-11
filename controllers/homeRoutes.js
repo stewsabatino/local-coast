@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.access_token) {
     res.redirect('/');
     return;
   }
@@ -60,12 +60,18 @@ router.get('/dashboard', async (req, res) => {
         const me = await spotifyApi.getMe();
         console.log(me.body.id);
         
+        req.session.save(() => {
+          req.session.spotify_id = me.body.id;
+        });
+        
         // const meData = me.get({ plain: true });
+        // We need to account for users that were already created. 
         const newUser = await User.create({
           name: me.body.display_name,
           email: me.body.email,
           spotify_id: me.body.id
         });
+        
         
         console.log(newUser);
         res.render('userDash', newUser);
@@ -73,6 +79,8 @@ router.get('/dashboard', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
-})
+});
+
+
 
 module.exports = router;
