@@ -101,7 +101,7 @@ app.get('/callback', (req, res) => {
       `Sucessfully retreived access token. Expires in ${expires_in} s.`
     );
     
-    res.render('homepage');
+    // res.render('homepage');
     req.session.save(()=> {
       req.session.access_token = access_token;
       req.session.refresh_token = refresh_token;
