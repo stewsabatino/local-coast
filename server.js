@@ -62,7 +62,7 @@ app.use(session(sess));
 // API - Node Package
 var spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID || '319241da7db34052a52158f93943b6b7',
-  clientSecret: process.env.DB_SECRET || '3e9808eeaa3c40a78bc1f49af1cd8f70',
+  clientSecret: process.env.CLIENT_SECRET || '3e9808eeaa3c40a78bc1f49af1cd8f70',
   redirectUri: process.env.REDIRECT_URI || 'http://localhost:3001/callback'
 });
 
