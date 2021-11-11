@@ -78,7 +78,6 @@ router.get('/dashboard', async (req, res) => {
   }
 })
 
-
 router.get('/editPlaylist/:id', async (req, res) => {
   // console.log(req.params)
   try {
@@ -123,7 +122,5 @@ router.get('/newplaylist', async (req, res) => {
     res.status(500).json(err);
   };
 })
-
-
 
 module.exports = router;
