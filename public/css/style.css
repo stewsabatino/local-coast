@@ -1,7 +1,7 @@
-.form {
-    background-color: orange;
+body {
+    background-image: linear-gradient(to right, gray, rgb(68, 68, 68), rgb(54, 54, 54));
 }
 
-body {
-    background-color: navy;
+a.nav-link:hover{
+    background-color: rgb(163, 163, 163);
 }
