@@ -1,11 +1,12 @@
-const pid = document.getElementById('p-id').innerHTML;
+
+const playlistAddHandler = async (event) => {
+    event.preventDefault();
+    const pid = document.getElementById('p-id').innerHTML;
     // const singlePlaylist = spotifyApi.getUserPlaylist(id);
     const ptitle = document.getElementById('p-name').innerHTML;
     const puri = document.getElementById('p-uri').innerHTML;
     const plength = 200;
     const user_id = 2;
-const playlistAddHandler = async (event) => {
-    event.preventDefault();
     
     const response = await fetch(`/api/post/new`, { 
             method: 'POST', 
@@ -25,4 +26,4 @@ const playlistAddHandler = async (event) => {
     }
 }
 
-document.querySelector('#add-playlist-form').addEventListener('submit', playlistAddHandler);
+document.querySelector('#addHome').addEventListener('click', playlistAddHandler);

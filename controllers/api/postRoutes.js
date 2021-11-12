@@ -1,9 +1,8 @@
-const sequelize = require('../../config/connection');
 const router = require('express').Router();
 const { Playlist } = require('../../models');
 
 router.post('/new', async (req, res) => {
-    console.log(req.params);
+    console.log(req.body);
     try {
         
         const playlistData = await Playlist.create({
