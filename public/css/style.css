@@ -9,6 +9,44 @@ body {
     background-image: linear-gradient(to right, gray, rgb(68, 68, 68), rgb(54, 54, 54));
 }
 
+.loginImg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+      
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+      
+    /* Set up positioning */
+    position: relative;
+    top: 0;
+    left: 0;
+    
+  }
+
+
+
+
+.loginButton{
+    display: block;
+    margin: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 40%;
+    border-width: thick;
+    border-color: var(--darkSpotify);
+    background-color: var(--spotify);
+}
+
+.loginButton:hover{
+    color: white;
+    border-width: medium;
+    -webkit-transform: scale(1.5); 
+    -ms-transform: scale(1.5); 
+    transform: scale(1.5);
+}
+
 .navbar{
     color: var(--spotify);
     font-size: 19px;
@@ -68,3 +106,4 @@ h4 {
 .btn:hover{
     color: white;
 }
+
