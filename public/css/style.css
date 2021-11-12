@@ -57,9 +57,21 @@ a.nav-link:hover{
     border-radius: 25px;
 }
 
+ .playlist-wrap {
+    padding: 7% 3%;
+}
 
+.playlist-display {
+    max-width: 94%;
+} 
 
-.main{
+.playlist-button {
+    max-height: 32px;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.main {
     display: flex;
     display: inline-block;
 }
@@ -69,7 +81,7 @@ a.nav-link:hover{
     padding: 20px;
 }
 
-.iframe{
+.iframe {
     margin-left: 100px;
     padding: 20px;
 }
@@ -78,7 +90,7 @@ h2 {
     color: var(--spotify);
 }
 
-.commentSection{
+.commentSection {
     border: solid;
     border-color: var(--darkSpotify);
     padding: 15px;
@@ -88,7 +100,7 @@ h2 {
     padding: 20px;
 }
 
-.form-input{
+.form-input {
     background-color: rgb(230, 230, 230);
     width: 700px;
     height: 40px;
@@ -105,7 +117,6 @@ h4 {
     margin-bottom: 50px;
 }
 
-.btn:hover{
+.btn:hover {
     color: white;
 }
-
