@@ -57,7 +57,7 @@ a.nav-link:hover{
 }
 
 
-
+                    /* Single Post Page */
 .main{
     display: flex;
     display: inline-block;
@@ -108,3 +108,31 @@ h4 {
     color: white;
 }
 
+                    /* Discover Page */
+
+.playlistDiscover{
+    margin-top: 5vh;
+    background-color: var(--spotify);
+    border-radius: 5px;
+}
+
+.playlistDiscover:hover{
+    background-color: white;
+
+}
+
+.playlistDiscover a {
+    color: black;
+    text-decoration: none;
+}
+
+.playlistDiscover:hover a {
+    color: black;
+    text-decoration: none;
+}
+
+.allDiscover{
+    background-color: var(--darkSpotify);
+    border-radius: 20px;
+    padding-top: 10px;
+}
