@@ -16,13 +16,13 @@
             </div>
 
     <div>
-        <div>
-            <h4>Likes</h4>
-            <p>{{playlists.likes.length}}</p>
+        <div class="row">
+            <h4 class="m-3">Likes</h4>
+            <p class="m-3 font-weight-bold text-warning upvote">{{playlists.likes.length}}</p>
+            <form class="form like-form m-3">
+                <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+            </form>
         </div>
-        <form class="form like-form">
-            <button type="submit" class=""></button>
-        </form>
     </div>
     <div>
         <h4>Comments</h4>
@@ -46,6 +46,8 @@
     </div>
 
 </div>
+
+
 
 <script src='/js/addComment.js'></script>
 <script src='/js/addLike.js'></script>
