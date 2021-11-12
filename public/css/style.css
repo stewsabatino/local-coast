@@ -1,7 +1,70 @@
+:root {
+    --spotify: rgb(30, 215, 96);
+    --darkSpotify: rgb(6, 46, 20);
+    --darkerSpotify: rgb(0, 2, 1);
+}
+
+
 body {
     background-image: linear-gradient(to right, gray, rgb(68, 68, 68), rgb(54, 54, 54));
 }
 
+.navbar{
+    color: var(--spotify);
+    font-size: 19px;
+}
+
 a.nav-link:hover{
-    background-color: rgb(163, 163, 163);
+    background-color: var(--spotify);
+    border-radius: 25px;
+}
+
+.main{
+    display: flex;
+    display: inline-block;
+}
+
+.singlePostTitle {
+    color: var(--spotify);
+    padding: 20px;
+}
+
+.iframe{
+    margin-left: 100px;
+    padding: 20px;
+}
+
+h2 {
+    color: var(--spotify);
+}
+
+.commentSection{
+    border: solid;
+    border-color: var(--darkSpotify);
+    padding: 15px;
+    color: white;
+    font-weight: 500;
+    background-color: var(--darkerSpotify);
+    padding: 20px;
+}
+
+.form-input{
+    background-color: rgb(230, 230, 230);
+    width: 700px;
+    height: 40px;
+}
+
+h4 {
+    color: var(--spotify);
+}  
+
+.btn {
+    background-color: var(--spotify);
+    border-radius: 25px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+}
+
+.btn:hover{
+    color: white;
 }
