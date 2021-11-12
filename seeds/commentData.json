@@ -10,7 +10,27 @@
         "playlist_id": 1
     },
     {
-        "entry": "WOW!",
+        "entry": "You did a good job putting this playlist together!",
+        "user_id": 2,
+        "playlist_id": 1
+    },
+    {
+        "entry": "Can I use this for my wedding?",
+        "user_id": 2,
+        "playlist_id": 2
+    },
+    {
+        "entry": "^ Same! I think I would add Come and Get your Love by Redbone!",
+        "user_id": 3,
+        "playlist_id": 2
+    },
+    {
+        "entry": "I will add more songs tonight!",
+        "user_id": 4,
+        "playlist_id": 1
+    },
+    {
+        "entry": "Ok, updated playlist! checkout the last few songs I added.",
         "user_id": 2,
         "playlist_id": 1
     }
