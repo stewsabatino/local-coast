@@ -1,0 +1,15 @@
+{{#each user.items as |item|}}
+        <div id="comments-wrapper">
+            
+                <img src="{{item.images.[0].url}}"/>
+                <h2>{{item.name}}</h2>
+                <form id="add-playlist-form">
+                    <p id="p-name" style="display: none;">{{item.name}}</p>
+                    <p id="p-uri"style="display: none;">{{item.uri}}</p>
+                    <p id="p-length" style="display: none;">3</p>
+                    <p id="p-id" style="display: none;">{{item.id}}</p>
+                    <button id="add-to-home" type="submit">Share Playlist</button>
+                </form>
+                
+        </div>
+{{/each}}

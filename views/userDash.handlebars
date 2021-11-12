@@ -1,11 +1,7 @@
 <div class="col-md-6">
     <h2><a id="add-playlist" href="/newplaylist">Add a playlist</a></h2>
 </div>
-{{#each user.items as |item|}}
-        <div id="comments-wrapper">
-            <h2>{{item.name}}</h2>
-        </div>
-{{/each}}
+{{> playlist-list}}
 
 {{#each users as |user| }}
 <div class="row align-center mb-5">
