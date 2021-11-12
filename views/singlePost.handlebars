@@ -7,47 +7,42 @@
 
     <div class="main">
         <div class="col-md-6">
-            <iframe class="iframe" src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="600" height="380"
-                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe class="iframe" src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="600"
+                height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
         <div>
             <div>
+                <div class="row">
+                    <h4 class="m-3">Likes</h4>
+                    <p class="m-3 font-weight-bold text-warning upvote">{{playlists.likes.length}}</p>
+                    <form class="form like-form m-3">
+                        <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div>
                 <h4>Comments</h4>
             </div>
-
-    <div>
-        <div class="row">
-            <h4 class="m-3">Likes</h4>
-            <p class="m-3 font-weight-bold text-warning upvote">{{playlists.likes.length}}</p>
-            <form class="form like-form m-3">
-                <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+            <div>
+                {{#each playlists.comments}}
+                <p class="commentSection">{{entry}}</p>
+                {{/each}}
+            </div>
+            <form class="form new-comment-form">
+                <div class="form-group">
+                    <label for="comment">Comment: </label>
+                    <input class="form-input" type="text" id="comment" />
+                </div>
+                <button type="submit" class="btn">submit</button>
             </form>
         </div>
-    </div>
-    <div>
-        <h4>Comments</h4>
-        {{#each playlists.comments}}
-        <p class="m-2">{{entry}}</p>
-        {{/each}}
 
     </div>
-        <form class="form new-comment-form">
-            <div class="form-group">
-                <label for="comment">Comment: </label>
-                <input class="form-input" type="text" id="comment" />
-            </div>
-            <button type="submit" class="btn">submit</button>
-        </form>
-        <div> 
-            {{#each playlists.comments}}
-            <p class="commentSection">{{entry}}</p>
-            {{/each}}
-        </div>
-    </div>
-
-</div>
 
 
 
-<script src='/js/addComment.js'></script>
-<script src='/js/addLike.js'></script>
+    <script src='/js/addComment.js'></script>
+    <script src='/js/addLike.js'></script>
