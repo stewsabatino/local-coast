@@ -4,6 +4,7 @@
     <div class="col-md-6">
         <h2 class="singlePostTitle">{{playlists.title}}</h2>
     </div>
+
     <div class="main">
         <div class="col-md-6">
             <iframe class="iframe" src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="600" height="380"
@@ -13,6 +14,22 @@
             <div>
                 <h4>Comments</h4>
             </div>
+
+    <div>
+        <div>
+            <h4>Likes</h4>
+            <p>{{playlists.likes.length}}</p>
+        </div>
+        <form class="form like-form">
+            <button type="submit" class=""></button>
+        </form>
+    </div>
+    <div>
+        <h4>Comments</h4>
+        {{#each playlists.comments}}
+        <p class="m-2">{{entry}}</p>
+        {{/each}}
+
     </div>
         <form class="form new-comment-form">
             <div class="form-group">
@@ -31,3 +48,4 @@
 </div>
 
 <script src='/js/addComment.js'></script>
+<script src='/js/addLike.js'></script>
