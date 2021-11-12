@@ -8,7 +8,7 @@
 body {
     background-image: linear-gradient(to right, gray, rgb(68, 68, 68), rgb(54, 54, 54));
 }
-
+                    /* LOGIN PAGE */
 .loginImg {
     /* Set rules to fill background */
     min-height: 100%;
@@ -17,6 +17,9 @@ body {
     /* Set up proportionate scaling */
     width: 100%;
     height: auto;
+    -webkit-transform: scale(.75); 
+    -ms-transform: scale(.75); 
+    transform: scale(.75);
       
     /* Set up positioning */
     position: relative;
@@ -25,14 +28,10 @@ body {
     
   }
 
-
-
-
 .loginButton{
     display: block;
     margin: auto;
     margin-top: 5vh;
-    margin-bottom: 5vh;
     width: 40%;
     border-width: thick;
     border-color: var(--darkSpotify);
@@ -46,7 +45,7 @@ body {
     -ms-transform: scale(1.5); 
     transform: scale(1.5);
 }
-
+                    /* NAV BAR */
 .navbar{
     color: var(--spotify);
     font-size: 19px;
@@ -64,6 +63,8 @@ a.nav-link:hover{
 .playlist-display {
     max-width: 94%;
 } 
+
+                    /* Single Post Page */
 
 .playlist-button {
     max-height: 32px;
@@ -119,4 +120,33 @@ h4 {
 
 .btn:hover {
     color: white;
+}
+
+                    /* Discover Page */
+
+.playlistDiscover{
+    margin-top: 5vh;
+    background-color: var(--spotify);
+    border-radius: 5px;
+}
+
+.playlistDiscover:hover{
+    background-color: white;
+
+}
+
+.playlistDiscover a {
+    color: black;
+    text-decoration: none;
+}
+
+.playlistDiscover:hover a {
+    color: black;
+    text-decoration: none;
+}
+
+.allDiscover{
+    background-color: var(--darkSpotify);
+    border-radius: 20px;
+    padding-top: 10px;
 }

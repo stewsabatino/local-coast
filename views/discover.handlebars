@@ -1,7 +1,7 @@
 {{#each playlists as |playlist| }}
-<div class="row align-center mb-5">
+<div class="allDiscover row align-center mb-5">
   <div class="col-md-6">
-    <h2><a href="/playlist/{{playlist.id}}">{{playlist.title}}</a></h2>
+    <h2 class="playlistDiscover"><a href="/playlist/{{playlist.id}}">{{playlist.title}}</a></h2>
   </div>
   <div class="col-md-6">
     <iframe src="https://open.spotify.com/embed/playlist/{{playlist.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
