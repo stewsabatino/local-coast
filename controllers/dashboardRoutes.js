@@ -4,6 +4,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const { findAll } = require('../models/User');
 const spotifyApi = new SpotifyWebApi();
 
+
 // Post Current Users Added Playlist to the page
 router.get('/', async (req, res) => {
     try{

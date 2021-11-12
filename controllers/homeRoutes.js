@@ -78,7 +78,6 @@ router.get('/dashboard', async (req, res) => {
   }
 })
 
-
 router.get('/editPlaylist/:id', async (req, res) => {
   // console.log(req.params)
   try {
@@ -103,27 +102,34 @@ router.get('/editPlaylist/:id', async (req, res) => {
 
 
 router.get('/newplaylist', async (req, res) => {
-  // console.log(req.params)
-  // spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESS_TOKEN);
   try {
     const currentData = await User.findByPk(req.session.user_id, {
     })
     const user = currentData.get({ plain: true })
-    const userData = await spotifyApi.getUserPlaylists(user.spotify_id);
-
-
-    // console.log(`Playlist Name: ${playlistData.name} ID: ${playlistData.id}`);
-
-    console.log(userData.body);
+    const userData = await spotifyApi.getUserPlaylists(user.spotify_id);     
+    // console.log(userData.body);
     // const user = userData.get({ plain: true });
-    res.render('userDash', { user: userData.body, user_id: req.session.user_id, logged_in: req.session.logged_in })
-
+    res.render('userDash', { user:userData.body, user_id: req.session.user_id, logged_in: req.session.logged_in })
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+      res.status(500).json(err);
   };
 })
 
-
+// 2nd Attempt to Store Playlist_id in DB 
+// router.get('/newplaylist/add/:id', async (req, res) => {
+//   try {
+//     // const currentData = await User.findByPk(req.session.user_id, { })
+//       // const user = currentData.get({ plain: true })
+//       const setData = await Playlist.create({
+//         spotify_playlist: req.body.id,
+//       });
+//       res.json(setData);
+//       // { user: userData.body, user_id: req.session.user_id, logged_in: req.session.logged_in })
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// })
 
 module.exports = router;

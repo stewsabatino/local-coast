@@ -5,6 +5,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const formidable = require('formidable');
 // Spotify Specific Authorization Packages
 // const request = require('request'); // "Request" library
 // const cors = require('cors');
@@ -58,6 +59,9 @@ const sess = {
 };
 // Add express-session and store as Express.js middleware
 app.use(session(sess));
+
+
+
 
 // API - Node Package
 var spotifyApi = new SpotifyWebApi({
