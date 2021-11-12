@@ -1,11 +1,20 @@
+<link rel="stylesheet" href="/css/style.css">
+
 <div class="row align-center mb-5">
     <div class="col-md-6">
-        <h2><a href="/singlePost/{{playlists.id}}">{{playlists.title}}</a></h2>
+        <h2 class="singlePostTitle">{{playlists.title}}</h2>
     </div>
-    <div class="col-md-6">
-        <iframe src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="300" height="380"
-            frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div>
+
+    <div class="main">
+        <div class="col-md-6">
+            <iframe class="iframe" src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="600" height="380"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        <div>
+            <div>
+                <h4>Comments</h4>
+            </div>
+
     <div>
         <div>
             <h4>Likes</h4>
@@ -20,14 +29,21 @@
         {{#each playlists.comments}}
         <p class="m-2">{{entry}}</p>
         {{/each}}
+
     </div>
-    <form class="form new-comment-form">
-        <div class="form-group">
-            <label for="comment">Comment</label>
-            <input class="form-input" type="text" id="comment" />
+        <form class="form new-comment-form">
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <input class="form-input" type="text" id="comment" />
+            </div>
+            <button type="submit" class="btn">submit</button>
+        </form>
+        <div> 
+            {{#each playlists.comments}}
+            <p class="commentSection">{{entry}}</p>
+            {{/each}}
         </div>
-        <button type="submit" class="btn">submit</button>
-    </form>
+    </div>
 
 </div>
 
