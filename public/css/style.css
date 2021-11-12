@@ -5,3 +5,16 @@ body {
 a.nav-link:hover{
     background-color: rgb(163, 163, 163);
 }
+ .playlist-wrap {
+    padding: 7% 3%;
+}
+.playlist-display {
+    max-width: 94%;
+
+} 
+
+.playlist-button {
+    max-height: 32px;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
