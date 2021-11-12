@@ -8,7 +8,7 @@
 body {
     background-image: linear-gradient(to right, gray, rgb(68, 68, 68), rgb(54, 54, 54));
 }
-
+                    /* LOGIN PAGE */
 .loginImg {
     /* Set rules to fill background */
     min-height: 100%;
@@ -17,6 +17,9 @@ body {
     /* Set up proportionate scaling */
     width: 100%;
     height: auto;
+    -webkit-transform: scale(.75); 
+    -ms-transform: scale(.75); 
+    transform: scale(.75);
       
     /* Set up positioning */
     position: relative;
@@ -25,14 +28,10 @@ body {
     
   }
 
-
-
-
 .loginButton{
     display: block;
     margin: auto;
     margin-top: 5vh;
-    margin-bottom: 5vh;
     width: 40%;
     border-width: thick;
     border-color: var(--darkSpotify);
@@ -46,7 +45,7 @@ body {
     -ms-transform: scale(1.5); 
     transform: scale(1.5);
 }
-
+                    /* NAV BAR */
 .navbar{
     color: var(--spotify);
     font-size: 19px;
