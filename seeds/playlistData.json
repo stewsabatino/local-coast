@@ -6,9 +6,27 @@
         "user_id": 1
     },
     {
-        "title": "Carly Rae Jepson",
-        "length": 45,
-        "link": "37i9dQZF1E4EmGFMzkENF2?utm_source=generator",
+        "title": "My wedding playlist",
+        "length": 108,
+        "link": "2xJxYMWrv8dXuvlztHBqho?utm_source=generator",
+        "user_id": 3
+    },
+    {
+        "title": "Mt. Joy Mix",
+        "length": 456,
+        "link": "37i9dQZF1EIWpFqDjKaDUt?utm_source=generator",
         "user_id": 2
+    },
+    {
+        "title": "Workout Playlist",
+        "length": 120,
+        "link": "37i9dQZF1DWUSyphfcc6aL?utm_source=generator",
+        "user_id": 4
+    },
+    {
+        "title": "ROAD TRIP!",
+        "length": 300,
+        "link": "3thUQNBZz9ZEqhaiN2UzBG?utm_source=generator",
+        "user_id": 1
     }
 ]
