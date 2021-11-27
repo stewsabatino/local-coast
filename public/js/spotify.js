@@ -16,7 +16,7 @@ const playlistAddHandler = async (event) => {
                 pid,
                 user_id
             }),
-            header: { 'Content-Type': 'multipart/form-data' }
+            headers: { 'Content-Type': 'application/json' }
         });
     if (response.ok) { 
         document.location.replace('/dashboard');

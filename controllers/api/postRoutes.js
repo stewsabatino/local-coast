@@ -3,6 +3,7 @@ const { Playlist } = require('../../models');
 
 router.post('/new', async (req, res) => {
     console.log(req.body);
+    console.log(req.session);
     try {
         
         const playlistData = await Playlist.create({
