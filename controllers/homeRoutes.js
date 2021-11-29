@@ -55,12 +55,14 @@ router.get('/dashboard', async (req, res) => {
   try {
     const me = await spotifyApi.getMe();
     const userData = await User.findOne({ where: { email: me.body.email } })
+    console.log(userData);
     if (!userData) {
       const newUser = await User.create({
         name: me.body.display_name,
         email: me.body.email,
         spotify_id: me.body.id
       });
+      console.log(newUser);
       req.session.save(() => {
         req.session.user_id = me.body.id;
         console.log(newUser);
