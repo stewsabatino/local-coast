@@ -18,7 +18,7 @@ async function formHandler (event) {
     });
 
     if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/discover');
     } else {
         alert(response.statusText);
     }

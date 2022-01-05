@@ -1,16 +1,155 @@
+<section>
+
 <div class="col-md-6">
-    <h2><a id="add-playlist" href="/newplaylist">Add a playlist</a></h2>
+  <h2><a id="add-playlist" href="/newplaylist">Add a playlist</a></h2>
+</div>
+<div class="d-flex flex-column justify-content-center align-items-center text-center mx-auto">
+  <div class="card border-0 bg-transparent text-white">
+      <img class="card-img w-75 w-md-50 mx-auto" src="../images/albumcover.jpg" alt="Card image" />
+      <div class="card-img-overlay">
+          <div class="mt-2">
+              <h6 class="text-white text-sm">Featured Playlist</h6>
+              <h2 class="text-white display-4">WELCOME TO THE SANDLOT</h2>
+              <button type="submit" class="loginButton"><a href="/spotify-login">Login with Spotify</a></button>
+          </div>
+      </div>
+  </div>     
+</div>
+</section>
+  {{!-- {{#each playlists as |playlist| }}
+<p class="m-3 font-weight-bold text-warning upvote">{{playlist.likes.length}}</p>
+<div class="allDiscover row align-center mb-5">
+  <div class="col-md-6">
+    <iframe src="https://open.spotify.com/embed/playlist/{{playlist.link}}" width="453" height="533" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+  </div>
+  <div class="col-md-6">
+    <h2 class="playlistDiscover"><a href="/playlist/{{playlist.id}}">{{playlist.title}}</a></h2>
+    
+    <div class="col-md-6">
+    <a href="/editPlaylist/{{playlist.id}}">Edit Playlist</a>
+    </div>
+    <div>
+        <div>  
+          <h4 class="m-3">Likes</h4>
+          <p class="m-3 font-weight-bold text-warning upvote">{{playlist.likes.length}}</p>
+          <form class="form like-form m-3">
+            <input id="uID" style="display: none;" value="{{user.id}}"></input>
+            <input id="pID" style="display: none;" value="{{playlist.id}}"></input>
+              <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+          </form>
+        </div>
+        <div>
+            <h4>Comments</h4>
+        </div>
+        <div>
+            {{#each playlists.comments}}
+            <p class="commentSection">{{entry}}</p>
+            {{/each}}
+        </div>
+        <form class="form new-comment-form">
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <input class="form-input" type="text" id="comment" />
+            </div>
+            <button type="submit" class="btn">submit</button>
+        </form>
+    </div>
+   
+</div>
+  
 </div>
 
+{{/each}} --}}
+
+<section style="margin: 0 auto; padding-top: 5%;">
+  {{#each userPlaylists as |userPlaylist|}}
+    
+
+      <div class="card card-styles w-25 d-inline-block border-0 mb-6 ml-3 mr-3">
+        <div class="card-body bg-dark">
+          <h5 class="card-title text-white my-title">{{userPlaylist.title}}</h5>
+        <iframe src="https://open.spotify.com/embed/playlist/{{userPlaylist.link}}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        <div class="card-footer mt-1 mb-1">
+          <small class="text-muted">{{userPlaylist.user.name}}</small>
+        </div>
+   
+        <div class="card-footer">
+          <form class="form like-form  w-25 d-inline-block">
+              <input id="uID" style="display: none;" value="{{userPlaylist.user.id}}"></input>
+              <input id="pID" style="display: none;" value="{{userPlaylist.id}}"></input>
+                <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+            </form>
+          <small class="text-muted d-inline-block">{{userPlaylist.likes.length}}</small>
+        
+        </div>
+        <div class="card-footer commentSection">
+          {{#each userPlaylist.comments}}
+            <p class="comment">{{entry}}</p>
+            <small>{{name}}</small>
+          {{/each}}
+          <form class="form new-comment-form">
+              <div class="form-group d-inline-block">
+                 
+                  <input class="w-50 form-input d-inline-block" type="text" id="comment" placeholder="comment" />
+                  <button type="submit" class="btn d-inline-block">submit</button>
+              </div>
+              
+          </form>
+          </div>
+          <div class="card-footer">
+          <small class="text-muted">{{playlist.owner.display_name}}</small>
+          
+            <a href="/editPlaylist/{{userPlaylist.id}}" class="edit-p">Edit</a>
+        </div>
+        </div>
+
+  
+        
+   
+  {{/each}}
+
+</section>
+      
+{{!-- 
+<div class="allDiscover row align-center mb-5">
+  <div class="col-md-6">
+    <iframe src="https://open.spotify.com/embed/playlist/{{playlist.link}}" width="453" height="533" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+  </div>
+  <div class="col-md-6">
+    <h2 class="playlistDiscover"><a href="/playlist/{{playlist.id}}">{{playlist.title}}</a></h2>
+    
+    
+    <div>
+        <div>  
+          <h4 class="m-3">Likes</h4>
+          <p class="m-3 font-weight-bold text-warning upvote">{{playlist.likes.length}}</p>
+          
+        </div>
+        <div>
+            <h4>Comments</h4>
+        </div>
+        <div>
+            {{#each playlists.comments}}
+            <p class="commentSection">{{entry}}</p>
+            {{/each}}
+        </div>
+        <form class="form new-comment-form">
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <input class="form-input" type="text" id="comment" />
+            </div>
+            <button type="submit" class="btn">submit</button>
+        </form>
+    </div>
+   
+</div>
+  
+</div> --}}
+
+
+ <script src='/js/addComment.js'></script>
+    <script src='/js/addLike.js'></script>
 {{> playlist-list}}
-
-{{#each users as |user| }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2><a href="/editPost/{{user.playlists.id}}">{{user.playlists.title}}</a></h2>
-  </div>
-  <div class="col-md-6">
-    <iframe src="https://open.spotify.com/embed/playlist/{{user.playlists.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-  </div>
-</div>
-{{/each}}

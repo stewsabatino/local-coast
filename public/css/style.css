@@ -12,38 +12,86 @@ body {
 .loginImg {
     /* Set rules to fill background */
     min-height: 100%;
-    min-width: 1024px;
-      
+    max-width: 60%;
+    margin: 0 auto;
     /* Set up proportionate scaling */
-    width: 100%;
     height: auto;
     -webkit-transform: scale(.75); 
     -ms-transform: scale(.75); 
     transform: scale(.75);
       
     /* Set up positioning */
-    position: relative;
-    top: 0;
-    left: 0;
+    position: absolute;
+    z-index: -1;
+    top: -10%;
+    /* top: 0;
+    left: 0; */
     
   }
+.featuredContainer {
+    margin: 0 auto;
+    width: 100%;
+}
+  .float-above {
+    z-index: 3;
+    margin: 0 auto;
+    margin-top: 15%;
+    text-align: center;
+    
 
-.loginButton{
-    display: block;
-    margin: auto;
-    margin-top: 5vh;
-    width: 40%;
-    border-width: thick;
-    border-color: var(--darkSpotify);
-    background-color: var(--spotify);
 }
 
+.feature-line {
+    font-size: 0.8rem;
+   color: #c9c9c9;
+}
+.featured-playlist {
+    font-size: 3.8rem;
+    color: #fff;
+  
+}
+.loginButton{
+    display: block;
+    margin: 0 auto;
+    color:rgb(40, 40, 40);
+    margin-top: 15px;
+    border-width: 3px;
+    border-color: var(--spotify);
+    background-color: transparent;
+}
+.loginButton a{
+    color:rgb(135, 135, 135);
+}
 .loginButton:hover{
     color: white;
     border-width: medium;
     -webkit-transform: scale(1.5); 
     -ms-transform: scale(1.5); 
     transform: scale(1.5);
+}
+
+.upvote-button {
+    border: 0px;
+    background-color: transparent;
+}
+
+#add-playlist {
+    font-size: 1.6rem;
+    color:rgb(150, 150, 150);
+    
+}
+#add-playlist:hover {
+    font-size: 1.6rem;
+    color:rgb(205, 205, 205);
+    
+}
+.edit-p {
+    font-size: 0.7rem;
+    color:rgb(135, 135, 135)
+}
+.edit-p:hover {
+    font-size: 1.3rem;
+    color:rgb(120, 120, 120)
 }
                     /* NAV BAR */
 .navbar{
@@ -92,19 +140,29 @@ h2 {
 }
 
 .commentSection {
-    border: solid;
-    border-color: var(--darkSpotify);
-    padding: 15px;
-    color: white;
+    color: rgb(133, 133, 133);
     font-weight: 500;
-    background-color: var(--darkerSpotify);
-    padding: 20px;
+    font-size: 10px;
+    background-color: rgb(228, 228, 228);
+    padding: 2px 4px;
+    max-height: 150px;
+    overflow: auto;
 }
+.card-styles {
+    max-height: 440px;
+    overflow: auto;
+    margin-bottom: 16px;
+}
+.my-title {
+   font-size: 0.75rem;
 
+}
+.comment {
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
 .form-input {
     background-color: rgb(230, 230, 230);
-    width: 700px;
-    height: 40px;
+    
 }
 
 h4 {
@@ -112,14 +170,14 @@ h4 {
 }  
 
 .btn {
-    background-color: var(--spotify);
-    border-radius: 25px;
-    margin-left: 70px;
-    margin-bottom: 50px;
+    color:rgb(68, 68, 68);
+    font-size: 0.58rem;
 }
 
 .btn:hover {
-    color: white;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000;
+    color: #000;
 }
 
                     /* Discover Page */

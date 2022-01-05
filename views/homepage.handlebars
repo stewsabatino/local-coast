@@ -1,9 +1,34 @@
 <div>
-<button type="submit" class="loginButton"><a href="/spotify-login">Spotify LogIn</a></button>
-<img class="loginImg" src="https://i5.walmartimages.com/asr/3f1f9c01-0ae7-43dc-ae6f-1cdc314d45e0_1.ea657b7422437eecff13e774fac6ba87.jpeg" alt="background image of spotify genres tab">
 
+{{#if logged_in}}
+    <button type="submit" class="logoutButton"><a href="/logout">Logout</a></button>
+{{/if}}
 
+<div class="d-flex flex-column justify-content-center align-items-center text-center mx-auto">
+    <div class="card border-0 bg-transparent text-white">
+        <img class="card-img w-75 w-md-50 mx-auto" src="../images/albumcover.jpg" alt="Card image">
+        <div class="card-img-overlay">
+            <div class="mt-2">
+                <h6 class="text-white text-sm">Featured Playlist</h6>
+                <h2 class="text-white display-4">WELCOME TO THE SANDLOT</h2>
+                <button type="submit" class="loginButton"><a href="/spotify-login">Login with Spotify</a></button>
+            </div>
+        </div>
+    </div>
+    
+    
 </div>
+
+   
+
+
+{{!-- 
+<img class="loginImg" src="https://i5.walmartimages.com/asr/3f1f9c01-0ae7-43dc-ae6f-1cdc314d45e0_1.ea657b7422437eecff13e774fac6ba87.jpeg" alt="background image of spotify genres tab"> --}}
+{{#if logged_in}}
+    {<script src="/js/logout.js"></script>}
+{{/if}}
+
+
 <div>
 <script src="/js/spotify.js"></script>
 </div>
