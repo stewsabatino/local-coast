@@ -1,9 +1,57 @@
+<link rel="stylesheet" href="/css/style.css">
+
 <div class="row align-center mb-5">
+    <div class="col-md-6">
+        <h2 class="singlePostTitle">{{playlists.title}}</h2>
+    </div>
+
+    <div class="main">
+        <div class="col-md-6">
+            <iframe class="iframe" src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="600"
+                height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        <div>
+            <div>
+                <div class="row">
+                    <h4 class="m-3">Likes</h4>
+                    <p class="m-3 font-weight-bold text-warning upvote">{{playlists.likes.length}}</p>
+                    {{!-- <form class="form like-form m-3">
+                        <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+                    </form> --}}
+                </div>
+            </div>
+            
+            <div>
+                <h4>Comments</h4>
+            </div>
+            <div>
+                {{#each playlists.comments}}
+                <p class="commentSection">{{entry}}</p>
+                {{/each}}
+            </div>
+           
+        </div>
+
+    </div>
+
+
+
+<div class="editplaylist row align-center mb-5">
   <div class="col-md-6">
-    <h2><a href="/singlePost/{{playlists.id}}">{{playlists.title}}</a></h2>
+
+      <form id="edit-playlist">
+          <input type="text" placeholder="{{playlists.title}}"><h2 class="playlistDiscover">{{playlists.title}}</h2>
+
+
+      </form>
+      <div>
+    <h2 class="playlistDiscover"><a href="/playlist/{{playlist.id}}"></a>
+    
+    <div class="col-md-6">
+    <a href="/editPlaylist/{{playlist.id}}">Edit Playlist</a>
+</div>
   </div>
   <div class="col-md-6">
-    <iframe src="https://open.spotify.com/embed/playlist/{{playlists.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <iframe src="https://open.spotify.com/embed/playlist/{{playlist.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
 </div>
-

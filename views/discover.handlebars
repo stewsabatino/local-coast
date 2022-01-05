@@ -1,10 +1,48 @@
 {{#each playlists as |playlist| }}
+<p class="m-3 font-weight-bold text-warning upvote">{{playlist.likes.length}}</p>
 <div class="allDiscover row align-center mb-5">
   <div class="col-md-6">
-    <h2 class="playlistDiscover"><a href="/playlist/{{playlist.id}}">{{playlist.title}}</a></h2>
+    <iframe src="https://open.spotify.com/embed/playlist/{{playlist.link}}" width="453" height="533" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
   </div>
   <div class="col-md-6">
-    <iframe src="https://open.spotify.com/embed/playlist/{{playlist.link}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-  </div>
+    <h2 class="playlistDiscover"><a href="/playlist/{{playlist.id}}">{{playlist.title}}</a></h2>
+    
+    <div class="col-md-6">
+    <a href="/editPlaylist/{{playlist.id}}">Edit Playlist</a>
+    </div>
+    <div>
+        <div>  
+          <h4 class="m-3">Likes</h4>
+          <p class="m-3 font-weight-bold text-warning upvote">{{playlist.likes.length}}</p>
+          <form class="form like-form m-3">
+            <input id="uID" style="display: none;" value="{{user.id}}"></input>
+            <input id="pID" style="display: none;" value="{{playlist.id}}"></input>
+              <button type="submit" class="upvote-button"><i class="fa fa-caret-up"></i></button>
+          </form>
+        </div>
+        <div>
+            <h4>Comments</h4>
+        </div>
+        <div>
+            {{#each playlists.comments}}
+            <p class="commentSection">{{entry}}</p>
+            {{/each}}
+        </div>
+        <form class="form new-comment-form">
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <input class="form-input" type="text" id="comment" />
+            </div>
+            <button type="submit" class="btn">submit</button>
+        </form>
+    </div>
+   
 </div>
+  
+</div>
+
 {{/each}}
+
+ <script src='/js/addComment.js'></script>
+    <script src='/js/addLike.js'></script>
